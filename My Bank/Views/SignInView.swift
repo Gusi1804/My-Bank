@@ -70,4 +70,5 @@ struct SignInView: View {
 
 #Preview {
     SignInView()
+        .environment(UserViewModel(user: .empty))
 }

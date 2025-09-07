@@ -36,6 +36,7 @@ struct My_BankApp: App {
             } else {
                 ContentView()
                     .environment(userVM)
+                    .environment(accountsVM)
             }
         }
     }
