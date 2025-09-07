@@ -12,4 +12,5 @@ struct MBAccount: Codable {
     @DocumentID var id: String?
     var name: String
     var balance: Double
+    var ownerUID: String
 }
