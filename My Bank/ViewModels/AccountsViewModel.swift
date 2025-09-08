@@ -112,6 +112,8 @@ class AccountsViewModel: Observable {
                     print("New transaction \(transaction.id)")
                     // new account, add to array
                     self.transactions[accountUID, default: []].append(transaction)
+                    // sort after adding
+                    self.transactions[accountUID, default: []].sort(by: { $0.date > $1.date })
                 }
             }
             
@@ -138,5 +140,14 @@ class AccountsViewModel: Observable {
                     "balance": FieldValue.increment(NSDecimalNumber(decimal: transaction.amount).doubleValue)
                 ]
             )
+    }
+    
+    func fetchAccount(uid: String) async throws -> MBAccount {
+        guard !uid.isEmpty else {
+            throw NSError(domain: "MyBank", code: 1, userInfo: ["NSLocalizedDescriptionKey": "Invalid account UID"])
+        }
+        let db = Firestore.firestore()
+        let document = try await db.collection("accounts").document(uid).getDocument()
+        return try document.data(as: MBAccount.self)
     }
 }

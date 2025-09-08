@@ -20,6 +20,12 @@ struct ContentView: View {
                 }, header: {
                     accountsHeader
                 })
+                
+                Section(header: VStack {
+                    Text("Top Stocks")
+                }) {
+                    stocksListView
+                }
             }
             .navigationTitle(Text("My Bank"))
             .sheet(isPresented: $showAddAccountSheet, content: {
@@ -72,6 +78,11 @@ struct ContentView: View {
         Button("Add Account") {
             showAddAccountSheet = true
         }
+    }
+    
+    @ViewBuilder
+    private var stocksListView: some View {
+        Text("Stocks")
     }
 }
 

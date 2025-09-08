@@ -10,15 +10,29 @@
 		CAC7716E2E6E23CF00404BED /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CAC7716D2E6E23CF00404BED /* FirebaseAuth */; };
 		CAC771702E6E23CF00404BED /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = CAC7716F2E6E23CF00404BED /* FirebaseCore */; };
 		CAC771722E6E23CF00404BED /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CAC771712E6E23CF00404BED /* FirebaseFirestore */; };
+		CAC771892E6E7D6F00404BED /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = CAC771882E6E7D6F00404BED /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CAC771512E6E222F00404BED /* My Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		CAC7718B2E6E7E4D00404BED /* Exceptions for "My Bank" folder in "My Bank" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"My-Bank-Info.plist",
+			);
+			target = CAC771502E6E222F00404BED /* My Bank */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		CAC771532E6E222F00404BED /* My Bank */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				CAC7718B2E6E7E4D00404BED /* Exceptions for "My Bank" folder in "My Bank" target */,
+			);
 			path = "My Bank";
 			sourceTree = "<group>";
 		};
@@ -29,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC771892E6E7D6F00404BED /* CodeScanner in Frameworks */,
 				CAC771702E6E23CF00404BED /* FirebaseCore in Frameworks */,
 				CAC7716E2E6E23CF00404BED /* FirebaseAuth in Frameworks */,
 				CAC771722E6E23CF00404BED /* FirebaseFirestore in Frameworks */,
@@ -77,6 +92,7 @@
 				CAC7716D2E6E23CF00404BED /* FirebaseAuth */,
 				CAC7716F2E6E23CF00404BED /* FirebaseCore */,
 				CAC771712E6E23CF00404BED /* FirebaseFirestore */,
+				CAC771882E6E7D6F00404BED /* CodeScanner */,
 			);
 			productName = "My Bank";
 			productReference = CAC771512E6E222F00404BED /* My Bank.app */;
@@ -108,6 +124,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CAC7716C2E6E23CF00404BED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				CAC771872E6E7D6F00404BED /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CAC771522E6E222F00404BED /* Products */;
@@ -271,8 +288,10 @@
 				DEVELOPMENT_TEAM = 46A969A6K2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "My-Bank-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "My Bank";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -308,8 +327,10 @@
 				DEVELOPMENT_TEAM = 46A969A6K2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "My-Bank-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "My Bank";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To scan QR codes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -367,6 +388,14 @@
 				minimumVersion = 12.2.0;
 			};
 		};
+		CAC771872E6E7D6F00404BED /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -384,6 +413,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CAC7716C2E6E23CF00404BED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		CAC771882E6E7D6F00404BED /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAC771872E6E7D6F00404BED /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
