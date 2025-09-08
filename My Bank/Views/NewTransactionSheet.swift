@@ -80,10 +80,6 @@ struct NewTransactionSheet: View {
         }
         .padding(.top)
     }
-    
-    func createTransaction() {
-        
-    }
 }
 
 #Preview {
