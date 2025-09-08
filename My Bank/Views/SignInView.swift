@@ -12,6 +12,7 @@ struct SignInView: View {
     @State var email = ""
     @State var password = ""
     @State private var errorMessage: String?
+    @Binding var signedIn: Bool
     
     var body: some View {
         Form {
@@ -34,6 +35,7 @@ struct SignInView: View {
                             try await userVM.signIn(email: email, password: password)
                             print("Signed in!")
                             print(userVM.user.isEmpty)
+                            signedIn = true
                         } catch {
                             print(error.localizedDescription)
                             self.errorMessage = "Failed to sign in:\n\(error.localizedDescription)"
@@ -54,6 +56,7 @@ struct SignInView: View {
                             try await userVM.signUp(email: email, password: password)
                             print("Signed up successfully!")
                             print(userVM.user.isEmpty)
+                            signedIn = true
                         } catch {
                             print(error.localizedDescription)
                             self.errorMessage = "Failed to sign up:\n\(error.localizedDescription)"
@@ -69,6 +72,6 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView()
+    SignInView(signedIn: .constant(false))
         .environment(UserViewModel(user: .empty))
 }

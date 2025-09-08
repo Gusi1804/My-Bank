@@ -12,9 +12,9 @@ import FirebaseAuth
 
 @main
 struct My_BankApp: App {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @State var userVM: UserViewModel
     @State var accountsVM: AccountsViewModel = .init()
+    @State var signedIn = false
     
     init() {
         FirebaseApp.configure()
@@ -30,8 +30,8 @@ struct My_BankApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if userVM.user.isEmpty {
-                SignInView()
+            if userVM.user.isEmpty && !signedIn {
+                SignInView(signedIn: $signedIn)
                     .environment(userVM)
             } else {
                 ContentView()
