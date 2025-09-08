@@ -50,6 +50,7 @@ struct NewAccountSheet: View {
         .onAppear {
             account.ownerUID = accountsVM.uid ?? ""
         }
+        .padding(.top)
     }
 }
 

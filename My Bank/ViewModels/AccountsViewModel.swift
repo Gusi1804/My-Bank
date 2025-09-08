@@ -31,7 +31,7 @@ class AccountsViewModel: Observable {
         let db = Firestore.firestore()
         guard let uid else {
             // if we can't get a uid, that means we're not signed in yet...
-            print("No user signed in, can't load accounts")
+            print("No user signed in, cannot load accounts from Firestore")
             return
         }
         
@@ -78,7 +78,7 @@ class AccountsViewModel: Observable {
         let db = Firestore.firestore()
         guard let uid else {
             // if we can't get a uid, that means we're not signed in yet...
-            print("No user signed in, can't load accounts")
+            print("No user signed in, cannot load transactions from Firestore")
             return
         }
         
