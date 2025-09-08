@@ -10,8 +10,8 @@ import FirebaseAuth
 
 /// Represents a user in the My Bank application
 struct MBUser: Codable {
-    let id: String
-    let email: String
+    var id: String
+    var email: String
     
     init(id: String, email: String) {
         self.id = id
