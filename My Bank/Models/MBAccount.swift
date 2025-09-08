@@ -19,8 +19,10 @@ struct MBAccount: Codable, Identifiable {
     }
     
     static let sampleData: [MBAccount] = [
-        .init(id: UUID().uuidString, name: "Debit Visa", balance: 10000.0, ownerUID: "me"),
-        .init(id: UUID().uuidString, name: "Credit Gold", balance: 524.24, ownerUID: "me"),
-        .init(id: UUID().uuidString, name: "Credit Platinum", balance: 1082.92, ownerUID: "me")
+        Self.sampleAccount,
+        .init(id: "account2", name: "Credit Gold", balance: 524.24, ownerUID: "me"),
+        .init(id: "account3", name: "Credit Platinum", balance: 1082.92, ownerUID: "me")
     ]
+    
+    static let sampleAccount: MBAccount = .init(id: "account1", name: "Debit Visa", balance: 10000.0, ownerUID: "me")
 }

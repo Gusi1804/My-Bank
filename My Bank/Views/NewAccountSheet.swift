@@ -15,31 +15,36 @@ struct NewAccountSheet: View {
     
     var body: some View {
         Form {
-            TextField("Account Name", text: $account.name)
-            TextField("Account Balance", value: $account.balance, format: .currency(code: "USD"))
-            
-            Button(action: {
-                guard !account.name.isEmpty else {
-                    return
-                }
-                
-                Task {
-                    do {
-                        try await accountsVM.createAccount(account)
-                        // once the account is created, dismiss the sheet
-                        presentationMode.wrappedValue.dismiss()
-                    } catch {
-                        print(error.localizedDescription)
-                        self.errorMessage = error.localizedDescription
+            Section(header: VStack { Text("New Account") }, footer: VStack {
+                Button(action: {
+                    guard !account.name.isEmpty else {
+                        return
                     }
+                    
+                    Task {
+                        do {
+                            try await accountsVM.createAccount(account)
+                            // once the account is created, dismiss the sheet
+                            presentationMode.wrappedValue.dismiss()
+                        } catch {
+                            print(error.localizedDescription)
+                            self.errorMessage = error.localizedDescription
+                        }
+                    }
+                }, label: {
+                    Text("Save Account")
+                        .frame(maxWidth: .infinity)
+                })
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.roundedRectangle)
+            }) {
+                TextField("Account Name", text: $account.name)
+                TextField("Account Balance", value: $account.balance, format: .currency(code: "USD"))
+                                
+                if let errorMessage {
+                    Text(errorMessage)
+                        .foregroundStyle(.red)
                 }
-            }, label: {
-                Text("Save Account")
-            })
-            
-            if let errorMessage {
-                Text(errorMessage)
-                    .foregroundStyle(.red)
             }
         }
         .onAppear {

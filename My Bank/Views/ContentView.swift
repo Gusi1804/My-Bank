@@ -37,11 +37,14 @@ struct ContentView: View {
     private var accountsListView: some View {
         List {
             ForEach(accounts) { account in
-                HStack {
-                    Text(account.name)
-                    Spacer()
-                    Text(account.formattedBalance)
-                }
+                NavigationLink(destination: AccountView(account: account), label: {
+                    HStack {
+                        Text(account.name)
+                        Spacer()
+                        Text(account.formattedBalance)
+                    }
+                })
+                
             }
         }
     }
