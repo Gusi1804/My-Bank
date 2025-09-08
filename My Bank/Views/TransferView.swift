@@ -79,7 +79,7 @@ struct TransferView: View {
         }
         
         VStack(alignment: .center) {
-            AsyncImage(url: URL(string: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=\(accountUID)"))
+            AsyncImage(url: URL(string: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=\(accountUID ?? "Unknown")"))
         }
     }
     

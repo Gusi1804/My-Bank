@@ -102,7 +102,9 @@ struct ContentView: View {
     private func loadStocks() async {
         for (ticker, _) in stocks {
             let request = URLRequest(url: URL(string: "https://api.finazon.io/latest/finazon/us_stocks_essential/price?ticker=\(ticker)&apikey=fcb78e8a1b384174bc43857374bb6d86ym")!)
-            let (data, _) = try! await URLSession.shared.data(for: request)
+            guard let (data, _) = try? await URLSession.shared.data(for: request) else {
+                return
+            }
             
             let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
             let newPrice = json["p"] as! Double
